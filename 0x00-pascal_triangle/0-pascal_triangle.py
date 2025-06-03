@@ -5,20 +5,22 @@
 
 
 def pascal_triangle(n):
-    """generates a pascal triangle
+    """Generates a Pascal's triangle.
 
     Args:
-        n (int): number of rows
+        n (int): Number of rows.
 
     Returns:
-        list(list(int)): list of lists of integers
+        list(list(int)): List of lists of integers representing the triangle.
     """
     triangle = list()
     if n > 0:
         for i in range(n):
             row = [1]
             for j in range(1, i + 1):
-                row.append(triangle[i - 1][j - 1] \
-                   + triangle[i - 1][j] if i != j else 1)
+                if i != j:
+                    row.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
+                else:
+                    row.append(1)
             triangle.append(row)
     return triangle
